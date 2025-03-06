@@ -1,0 +1,18 @@
+[
+  {
+    "ContainingType": "BacktestAPI.Controllers.HistoricalDataController",
+    "Method": "GetHistoricalData",
+    "RelativePath": "api/HistoricalData/{assetId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "assetId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
