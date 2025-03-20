@@ -1,107 +1,51 @@
-// src/app/services/market-data.service.ts
-
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, map } from 'rxjs';
+import { MarketData, OHLCData } from '../models/market-data.model';
+import { environment } from '../environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MarketDataService {
-  private apiUrl = 'https://your-api-url.com/api'; // Replace with your .NET API URL
-  private activeSubscriptions: Map<string, any> = new Map();
-  private webSocket!: WebSocket;
+  private apiUrl = `${environment.apiUrl}/marketdata`;
 
-  constructor(private http: HttpClient) {
-    this.initWebSocket();
+  constructor(private http: HttpClient) { }
+
+  getSymbols(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.apiUrl}/symbols`);
   }
 
-  private initWebSocket() {
-    this.webSocket = new WebSocket('wss://your-api-url.com/ws'); // Replace with your WebSocket URL
+  getTimeframes(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.apiUrl}/timeframes`);
+  }
+
+  getMarketData(symbol: string, timeframe: string, from?: Date, to?: Date): Observable<MarketData[]> {
+    let url = `${this.apiUrl}/${symbol}/${timeframe}`;
     
-    this.webSocket.onopen = () => {
-      console.log('WebSocket connection established');
-    };
-    
-    this.webSocket.onmessage = (event) => {
-      const data = JSON.parse(event.data);
-      if (data.type === 'PRICE_UPDATE' && this.activeSubscriptions.has(data.subscriberUID)) {
-        const callback = this.activeSubscriptions.get(data.subscriberUID);
-        callback(data.bar);
-      }
-    };
-    
-    this.webSocket.onclose = () => {
-      console.log('WebSocket connection closed. Reconnecting in 5 seconds...');
-      setTimeout(() => this.initWebSocket(), 5000);
-    };
-  }
-
-  searchSymbols(query: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/symbols/search?query=${query}`);
-  }
-
-  getSymbolInfo(symbol: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/symbols/${symbol}`).pipe(
-      map(response => ({
-        name: response.symbol,
-        ticker: response.symbol,
-        description: response.name,
-        type: 'forex',
-        session: '24x7',
-        timezone: 'Etc/UTC',
-        exchange: response.exchange,
-        minmov: 1,
-        pricescale: Math.pow(10, response.decimalPlaces),
-        has_intraday: true,
-        supported_resolutions: ['1', '5', '15', '30', '60', '240', 'D', 'W', 'M'],
-        currency_code: response.quoteCurrency,
-        data_status: 'streaming'
-      }))
-    );
-  }
-
-  getBars(symbol: string, resolution: string, from: number, to: number): Observable<any[]> {
-    return this.http.get<any[]>(
-      `${this.apiUrl}/bars?symbol=${symbol}&resolution=${resolution}&from=${from}&to=${to}`
-    ).pipe(
-      map(response => {
-        return response.map(bar => ({
-          time: bar.timestamp * 1000, // Convert to milliseconds
-          open: bar.open,
-          high: bar.high,
-          low: bar.low,
-          close: bar.close,
-          volume: bar.volume
-        }));
-      })
-    );
-  }
-
-  subscribeToBars(symbol: string, resolution: string, callback: Function, subscriberUID: string): void {
-    this.activeSubscriptions.set(subscriberUID, callback);
-    
-    if (this.webSocket.readyState === WebSocket.OPEN) {
-      this.webSocket.send(JSON.stringify({
-        action: 'subscribe',
-        symbol: symbol,
-        resolution: resolution,
-        subscriberUID: subscriberUID
-      }));
+    const params: any = {};
+    if (from) {
+      params.from = from.toISOString();
     }
-  }
-
-  unsubscribeFromBars(subscriberUID: string): void {
-    if (this.activeSubscriptions.has(subscriberUID)) {
-      this.activeSubscriptions.delete(subscriberUID);
-      
-      if (this.webSocket.readyState === WebSocket.OPEN) {
-        this.webSocket.send(JSON.stringify({
-          action: 'unsubscribe',
-          subscriberUID: subscriberUID
-        }));
-      }
+    
+    if (to) {
+      params.to = to.toISOString();
     }
+    
+    return this.http.get<MarketData[]>(url, { params });
+  }
+  
+  // Convert to TradingView compatible format
+  getOHLCData(symbol: string, timeframe: string, from?: Date, to?: Date): Observable<OHLCData[]> {
+    return this.getMarketData(symbol, timeframe, from, to).pipe(
+      map(data => data.map(candle => ({
+        time: new Date(candle.timestamp).getTime() / 1000, // Convert to Unix timestamp in seconds
+        open: candle.open,
+        high: candle.high,
+        low: candle.low,
+        close: candle.close,
+        volume: candle.volume
+      })))
+    );
   }
 }

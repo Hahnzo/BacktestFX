@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "FWrn2AvDLJdzcdMfnz41oMGYDlmzsk/xA1QjksZWEUw=",
+  "Source": "BacktestArenaAPI",
+  "BasePath": "_content/BacktestArenaAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

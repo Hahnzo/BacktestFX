@@ -1,0 +1,166 @@
+<div class="backtest-form-container">
+    <div class="card">
+      <div class="card-header">
+        <h2>{{ isEditMode ? 'Edit Backtest' : 'Create New Backtest' }}</h2>
+      </div>
+      <div class="card-body">
+        <div class="alert alert-danger" *ngIf="errorMessage">
+          {{ errorMessage }}
+        </div>
+        
+        <div class="loading-spinner" *ngIf="isLoading">
+          <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+        
+        <form [formGroup]="backtestForm" (ngSubmit)="onSubmit()" *ngIf="!isLoading">
+          <div class="form-group">
+            <label for="name">Backtest Name*</label>
+            <input 
+              type="text" 
+              id="name" 
+              formControlName="name" 
+              class="form-control" 
+              [ngClass]="{'is-invalid': backtestForm.get('name')?.invalid && backtestForm.get('name')?.touched}"
+              placeholder="Enter a name for your backtest"
+            >
+            <div class="invalid-feedback" *ngIf="backtestForm.get('name')?.errors?.['required'] && backtestForm.get('name')?.touched">
+              Name is required
+            </div>
+            <div class="invalid-feedback" *ngIf="backtestForm.get('name')?.errors?.['maxlength'] && backtestForm.get('name')?.touched">
+              Name must be less than 100 characters
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea 
+              id="description" 
+              formControlName="description" 
+              class="form-control" 
+              [ngClass]="{'is-invalid': backtestForm.get('description')?.invalid && backtestForm.get('description')?.touched}"
+              placeholder="Optional description of your backtest strategy"
+              rows="3"
+            ></textarea>
+            <div class="invalid-feedback" *ngIf="backtestForm.get('description')?.errors?.['maxlength'] && backtestForm.get('description')?.touched">
+              Description must be less than 500 characters
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="symbol">Symbol*</label>
+                <select 
+                  id="symbol" 
+                  formControlName="symbol" 
+                  class="form-control" 
+                  [ngClass]="{'is-invalid': backtestForm.get('symbol')?.invalid && backtestForm.get('symbol')?.touched}"
+                >
+                  <option value="">Select a symbol</option>
+                  <option *ngFor="let symbol of symbols" [value]="symbol">{{ symbol }}</option>
+                </select>
+                <div class="invalid-feedback" *ngIf="backtestForm.get('symbol')?.errors?.['required'] && backtestForm.get('symbol')?.touched">
+                  Symbol is required
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="timeframe">Timeframe*</label>
+                <select 
+                  id="timeframe" 
+                  formControlName="timeframe" 
+                  class="form-control" 
+                  [ngClass]="{'is-invalid': backtestForm.get('timeframe')?.invalid && backtestForm.get('timeframe')?.touched}"
+                >
+                  <option value="">Select a timeframe</option>
+                  <option *ngFor="let timeframe of timeframes" [value]="timeframe">{{ timeframe }}</option>
+                </select>
+                <div class="invalid-feedback" *ngIf="backtestForm.get('timeframe')?.errors?.['required'] && backtestForm.get('timeframe')?.touched">
+                  Timeframe is required
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="startDate">Start Date*</label>
+                <input 
+                  type="date" 
+                  id="startDate" 
+                  formControlName="startDate" 
+                  class="form-control" 
+                  [ngClass]="{'is-invalid': backtestForm.get('startDate')?.invalid && backtestForm.get('startDate')?.touched}"
+                >
+                <div class="invalid-feedback" *ngIf="backtestForm.get('startDate')?.errors?.['required'] && backtestForm.get('startDate')?.touched">
+                  Start date is required
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="endDate">End Date*</label>
+                <input 
+                  type="date" 
+                  id="endDate" 
+                  formControlName="endDate" 
+                  class="form-control" 
+                  [ngClass]="{'is-invalid': backtestForm.get('endDate')?.invalid && backtestForm.get('endDate')?.touched}"
+                >
+                <div class="invalid-feedback" *ngIf="backtestForm.get('endDate')?.errors?.['required'] && backtestForm.get('endDate')?.touched">
+                  End date is required
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="initialBalance">Initial Balance*</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input 
+                type="number" 
+                id="initialBalance" 
+                formControlName="initialBalance" 
+                class="form-control" 
+                [ngClass]="{'is-invalid': backtestForm.get('initialBalance')?.invalid && backtestForm.get('initialBalance')?.touched}"
+                min="0"
+                step="1000"
+              >
+              <div class="invalid-feedback" *ngIf="backtestForm.get('initialBalance')?.errors?.['required'] && backtestForm.get('initialBalance')?.touched">
+                Initial balance is required
+              </div>
+              <div class="invalid-feedback" *ngIf="backtestForm.get('initialBalance')?.errors?.['min'] && backtestForm.get('initialBalance')?.touched">
+                Initial balance must be greater than or equal to 0
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group mt-4">
+            <button 
+              type="submit" 
+              class="btn btn-primary"
+              [disabled]="backtestForm.invalid || isLoading"
+            >
+              {{ isEditMode ? 'Update' : 'Create' }} Backtest
+            </button>
+            <button 
+              type="button" 
+              class="btn btn-outline-secondary ml-2"
+              routerLink="/dashboard"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

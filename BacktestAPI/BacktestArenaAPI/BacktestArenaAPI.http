@@ -1,0 +1,6 @@
+@BacktestArenaAPI_HostAddress = http://localhost:5101
+
+GET {{BacktestArenaAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
