@@ -1,18 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { User } from '../models/user.model';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  imports: [
-    CommonModule,
-    RouterModule // If you're using RouterLink directives
-  ],
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
+  standalone: true,
+  imports: [RouterLink, RouterLinkActive, NgIf]
 })
 export class NavbarComponent implements OnInit {
   currentUser: User | null = null;

@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { BacktestService } from '../../services/backtest.service';
 import { MarketDataService } from '../../services/market-data.service';
 import { Backtest } from '../../models/backtest.model';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { NgIf, NgFor, NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-backtest-form',
-  imports:[CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './backtest-form.component.html',
-  styleUrls: ['./backtest-form.component.scss']
+  styleUrls: ['./backtest-form.component.scss'],
+  standalone: true,
+  imports: [ReactiveFormsModule, NgIf, NgFor, NgClass, RouterLink]
 })
 export class BacktestFormComponent implements OnInit {
   backtestForm: FormGroup;
@@ -135,6 +135,8 @@ export class BacktestFormComponent implements OnInit {
       initialBalance: formValue.initialBalance
     };
 
+    console.log('Sending backtest data:', backtest);
+
     if (this.isEditMode && this.backtestId) {
       backtest.id = this.backtestId;
       this.backtestService.updateBacktest(this.backtestId, backtest).subscribe({
@@ -156,6 +158,7 @@ export class BacktestFormComponent implements OnInit {
         },
         error: (error) => {
           console.error('Error creating backtest', error);
+          console.error('Error message:', error.error);
           this.errorMessage = 'Failed to create backtest';
           this.isLoading = false;
         }

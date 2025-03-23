@@ -1,16 +1,15 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { NgIf, NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-login',
-  imports:[CommonModule, RouterModule, FormsModule, ReactiveFormsModule],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  standalone: true,
+  imports: [ReactiveFormsModule, NgIf, NgClass, RouterLink]
 })
 export class LoginComponent {
   loginForm: FormGroup;
@@ -46,5 +45,13 @@ export class LoginComponent {
         this.errorMessage = error.error?.message || 'Invalid email or password';
       }
     });
+  }
+
+  test(): void{
+    this.authService.test().subscribe({
+      next: () => {
+        console.log("Test")
+      }
+    })
   }
 }

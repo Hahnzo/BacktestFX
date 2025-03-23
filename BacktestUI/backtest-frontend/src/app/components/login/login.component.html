@@ -4,6 +4,7 @@
         <h2>Login to Backtest Arena</h2>
       </div>
       <div class="card-body">
+          <button (click)="test()">TEST BUTTON</button>
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
           <div class="alert alert-danger" *ngIf="errorMessage">
             {{ errorMessage }}

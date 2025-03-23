@@ -58,7 +58,8 @@ namespace BacktestArenaAPI.Controllers
                 Email = model.Email,
                 PasswordHash = BC.HashPassword(model.Password),
                 CreatedAt = DateTime.UtcNow,
-                LastLogin = DateTime.UtcNow
+                LastLogin = DateTime.UtcNow,
+                ProfilePicture = "111111"
             };
 
             await _context.Users.AddAsync(user);
@@ -70,17 +71,25 @@ namespace BacktestArenaAPI.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginModel model)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
-
-            if (user == null || !BC.Verify(model.Password, user.PasswordHash))
+            try
             {
-                return Unauthorized("Invalid email or password");
+                var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
+
+                if (user == null || !BC.Verify(model.Password, user.PasswordHash))
+                {
+                    return Unauthorized("Invalid email or password");
+                }
+
+                user.LastLogin = DateTime.UtcNow;
+                await _context.SaveChangesAsync();
+
+                return Ok(new { token = GenerateJwtToken(user) });
             }
-
-            user.LastLogin = DateTime.UtcNow;
-            await _context.SaveChangesAsync();
-
-            return Ok(new { token = GenerateJwtToken(user) });
+            catch (Exception ex)
+            {
+                // Log the exception
+                return StatusCode(500, new { message = "An error occurred during login", details = ex.Message });
+            }
         }
 
         private string GenerateJwtToken(User user)

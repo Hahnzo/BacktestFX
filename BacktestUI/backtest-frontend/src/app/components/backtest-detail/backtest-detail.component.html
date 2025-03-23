@@ -1,257 +1,258 @@
 <div class="backtest-detail-container" *ngIf="!isLoading && backtest">
-    <div class="row mb-3">
-      <div class="col-md-8">
-        <h1>{{ backtest.name }}</h1>
-        <p *ngIf="backtest.description" class="text-muted">{{ backtest.description }}</p>
-        <div class="backtest-meta">
-          <span class="badge badge-primary mr-2">{{ backtest.symbol }}</span>
-          <span class="badge badge-secondary mr-2">{{ backtest.timeframe }}</span>
-          <span class="badge badge-info">{{ backtest.startDate | date:'shortDate' }} - {{ backtest.endDate | date:'shortDate' }}</span>
-        </div>
-      </div>
-      <div class="col-md-4 text-right">
-        <button class="btn btn-outline-primary mr-2" [routerLink]="['/backtest', 'edit', backtest.id]">
-          <i class="fa fa-edit"></i> Edit
-        </button>
-        <button class="btn btn-primary" (click)="showOrderForm()">
-          <i class="fa fa-plus"></i> New Order
-        </button>
+  <div class="row mb-3">
+    <div class="col-md-8">
+      <h1>{{ backtest.name }}</h1>
+      <p *ngIf="backtest.description" class="text-muted">{{ backtest.description }}</p>
+      <div class="backtest-meta">
+        <span class="badge badge-primary mr-2">{{ backtest.symbol }}</span>
+        <span class="badge badge-secondary mr-2">{{ backtest.timeframe }}</span>
+        <span class="badge badge-info">{{ backtest.startDate | date:'shortDate' }} - {{ backtest.endDate | date:'shortDate' }}</span>
       </div>
     </div>
-  
-    <div class="row">
-      <div class="col-md-8">
-        <!-- TradingView Chart -->
-        <div class="card mb-4">
-          <div class="card-body p-0">
-            <div id="tradingview-chart" style="height: 500px;"></div>
-          </div>
-        </div>
-        
-        <!-- Backtest Statistics -->
-        <div class="card mb-4">
-          <div class="card-header">
-            <h5 class="mb-0">Backtest Results</h5>
-          </div>
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-3">
-                <div class="stat-card">
-                  <div class="stat-title">Total P&L</div>
-                  <div class="stat-value" [ngClass]="{'text-success': backtest.totalPnL! > 0, 'text-danger': backtest.totalPnL! < 0}">
-                    {{ backtest.totalPnL! | currency }}
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="stat-card">
-                  <div class="stat-title">Win Rate</div>
-                  <div class="stat-value">{{ backtest.winRate! | number:'1.1-1' }}%</div>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="stat-card">
-                  <div class="stat-title">Trades</div>
-                  <div class="stat-value">{{ backtest.totalTrades }}</div>
-                  <div class="stat-subtitle">{{ backtest.winningTrades }} W / {{ backtest.losingTrades }} L</div>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="stat-card">
-                  <div class="stat-title">Balance</div>
-                  <div class="stat-value">{{ backtest.finalBalance! | currency }}</div>
-                  <div class="stat-subtitle">Initial: {{ backtest.initialBalance | currency }}</div>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div class="col-md-4 text-right">
+      <button class="btn btn-outline-primary mr-2" [routerLink]="['/backtest', 'edit', backtest.id]">
+        <i class="fa fa-edit"></i> Edit
+      </button>
+      <button class="btn btn-primary" (click)="showOrderForm()">
+        <i class="fa fa-plus"></i> New Order
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <!-- TradingView Chart -->
+      <div class="card mb-4">
+        <div class="card-body p-0">
+          <!-- Add explicit style dimensions -->
+          <div id="tradingview-chart" style="height: 500px; width: 100%;"></div>
         </div>
       </div>
       
-      <div class="col-md-4">
-        <!-- Order Form -->
-        <div class="card mb-4" *ngIf="orderFormVisible">
-          <div class="card-header">
-            <h5 class="mb-0">New Order</h5>
-          </div>
-          <div class="card-body">
-            <form (ngSubmit)="onOrderSubmit()">
-              <div class="form-group">
-                <label for="orderType">Order Type</label>
-                <select 
-                  id="orderType" 
-                  class="form-control"
-                  [(ngModel)]="newOrder.type"
-                  name="type"
-                >
-                  <option [value]="'Market'">Market</option>
-                  <option [value]="'Limit'">Limit</option>
-                  <option [value]="'Stop'">Stop</option>
-                </select>
-              </div>
-              
-              <div class="form-group">
-                <label>Side</label>
-                <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
-                  <label class="btn btn-outline-success" [class.active]="newOrder.side === 'Buy'">
-                    <input 
-                      type="radio" 
-                      name="side" 
-                      [value]="'Buy'" 
-                      [(ngModel)]="newOrder.side"
-                    > Buy
-                  </label>
-                  <label class="btn btn-outline-danger" [class.active]="newOrder.side === 'Sell'">
-                    <input 
-                      type="radio" 
-                      name="side" 
-                      [value]="'Sell'" 
-                      [(ngModel)]="newOrder.side"
-                    > Sell
-                  </label>
-                </div>
-              </div>
-              
-              <div class="form-group">
-                <label for="price">Price</label>
-                <input 
-                  type="number" 
-                  id="price" 
-                  class="form-control" 
-                  [(ngModel)]="newOrder.price"
-                  name="price"
-                  step="0.00001"
-                  required
-                >
-              </div>
-              
-              <div class="form-group">
-                <label for="quantity">Quantity (Lots)</label>
-                <input 
-                  type="number" 
-                  id="quantity" 
-                  class="form-control" 
-                  [(ngModel)]="newOrder.quantity"
-                  name="quantity"
-                  min="0.01"
-                  step="0.01"
-                  required
-                >
-              </div>
-              
-              <div class="form-group">
-                <label for="stopLoss">Stop Loss (Optional)</label>
-                <input 
-                  type="number" 
-                  id="stopLoss" 
-                  class="form-control" 
-                  [(ngModel)]="newOrder.stopLoss"
-                  name="stopLoss"
-                  step="0.00001"
-                >
-              </div>
-              
-              <div class="form-group">
-                <label for="takeProfit">Take Profit (Optional)</label>
-                <input 
-                  type="number" 
-                  id="takeProfit" 
-                  class="form-control" 
-                  [(ngModel)]="newOrder.takeProfit"
-                  name="takeProfit"
-                  step="0.00001"
-                >
-              </div>
-              
-              <div class="form-group">
-                <label for="entryTime">Entry Time</label>
-                <input 
-                  type="datetime-local" 
-                  id="entryTime" 
-                  class="form-control" 
-                  [(ngModel)]="newOrder.entryTime"
-                  name="entryTime"
-                  required
-                >
-              </div>
-              
-              <div class="form-buttons">
-                <button type="submit" class="btn btn-primary">Place Order</button>
-                <button type="button" class="btn btn-outline-secondary ml-2" (click)="hideOrderForm()">Cancel</button>
-              </div>
-            </form>
-          </div>
+      <!-- Backtest Statistics -->
+      <div class="card mb-4">
+        <div class="card-header">
+          <h5 class="mb-0">Backtest Results</h5>
         </div>
-        
-        <!-- Order List -->
-        <div class="card mb-4">
-          <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Orders</h5>
-            <span class="badge badge-primary">{{ orders.length }}</span>
-          </div>
-          <div class="card-body p-0">
-            <div class="list-group">
-              <div 
-                *ngFor="let order of orders" 
-                class="list-group-item list-group-item-action" 
-                [class.active]="selectedOrder?.id === order.id" 
-                (click)="selectOrder(order)"
-              >
-                <div class="d-flex w-100 justify-content-between">
-                  <h6 class="mb-1" [ngClass]="{'text-success': order.side === 'Buy', 'text-danger': order.side === 'Sell'}">
-                    {{ order.side }} {{ order.quantity }} lot(s)
-                  </h6>
-                  <small>{{ order.entryTime | date:'short' }}</small>
-                </div>
-                <p class="mb-1">
-                  Entry: {{ order.price }}
-                  <span *ngIf="order.exitPrice"> → Exit: {{ order.exitPrice }}</span>
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <span class="badge" 
-                    [ngClass]="{'badge-success': order.status === 'Filled' && order.pnL! > 0, 
-                               'badge-danger': order.status === 'Filled' && order.pnL! < 0,
-                               'badge-warning': order.status === 'Pending',
-                               'badge-secondary': order.status === 'Cancelled'}">
-                    {{ order.status }}
-                    <span *ngIf="order.status === 'Filled' && order.pnL">
-                      ({{ order.pnL | currency }})
-                    </span>
-                  </span>
-                  <div class="btn-group">
-                    <button 
-                      class="btn btn-sm btn-outline-primary" 
-                      *ngIf="order.status === 'Pending' || (order.status === 'Filled' && !order.exitTime)"
-                      (click)="closeOrder(order); $event.stopPropagation()">
-                      Close
-                    </button>
-                    <button 
-                      class="btn btn-sm btn-outline-danger" 
-                      (click)="deleteOrder(order); $event.stopPropagation()">
-                      <i class="fa fa-trash"></i>
-                    </button>
-                  </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="stat-card">
+                <div class="stat-title">Total P&L</div>
+                <div class="stat-value" [ngClass]="{'text-success': backtest.totalPnL! > 0, 'text-danger': backtest.totalPnL! < 0}">
+                  {{ backtest.totalPnL! | currency }}
                 </div>
               </div>
             </div>
-            
-            <div class="text-center p-3" *ngIf="orders.length === 0">
-              <p class="text-muted mb-0">No orders yet</p>
-              <button class="btn btn-link" (click)="showOrderForm()">Create your first order</button>
+            <div class="col-md-3">
+              <div class="stat-card">
+                <div class="stat-title">Win Rate</div>
+                <div class="stat-value">{{ backtest.winRate! | number:'1.1-1' }}%</div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="stat-card">
+                <div class="stat-title">Trades</div>
+                <div class="stat-value">{{ backtest.totalTrades }}</div>
+                <div class="stat-subtitle">{{ backtest.winningTrades }} W / {{ backtest.losingTrades }} L</div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="stat-card">
+                <div class="stat-title">Balance</div>
+                <div class="stat-value">{{ backtest.finalBalance! | currency }}</div>
+                <div class="stat-subtitle">Initial: {{ backtest.initialBalance | currency }}</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  
-  <div class="loading-container" *ngIf="isLoading">
-    <div class="spinner-border text-primary" role="status">
-      <span class="sr-only">Loading...</span>
+    
+    <div class="col-md-4">
+      <!-- Order Form -->
+      <div class="card mb-4" *ngIf="orderFormVisible">
+        <div class="card-header">
+          <h5 class="mb-0">New Order</h5>
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)="onOrderSubmit()">
+            <div class="form-group">
+              <label for="orderType">Order Type</label>
+              <select 
+                id="orderType" 
+                class="form-control"
+                [(ngModel)]="newOrder.type"
+                name="type"
+              >
+                <option [value]="'Market'">Market</option>
+                <option [value]="'Limit'">Limit</option>
+                <option [value]="'Stop'">Stop</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label>Side</label>
+              <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
+                <label class="btn btn-outline-success" [class.active]="newOrder.side === 'Buy'">
+                  <input 
+                    type="radio" 
+                    name="side" 
+                    [value]="'Buy'" 
+                    [(ngModel)]="newOrder.side"
+                  > Buy
+                </label>
+                <label class="btn btn-outline-danger" [class.active]="newOrder.side === 'Sell'">
+                  <input 
+                    type="radio" 
+                    name="side" 
+                    [value]="'Sell'" 
+                    [(ngModel)]="newOrder.side"
+                  > Sell
+                </label>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="price">Price</label>
+              <input 
+                type="number" 
+                id="price" 
+                class="form-control" 
+                [(ngModel)]="newOrder.price"
+                name="price"
+                step="0.00001"
+                required
+              >
+            </div>
+            
+            <div class="form-group">
+              <label for="quantity">Quantity (Lots)</label>
+              <input 
+                type="number" 
+                id="quantity" 
+                class="form-control" 
+                [(ngModel)]="newOrder.quantity"
+                name="quantity"
+                min="0.01"
+                step="0.01"
+                required
+              >
+            </div>
+            
+            <div class="form-group">
+              <label for="stopLoss">Stop Loss (Optional)</label>
+              <input 
+                type="number" 
+                id="stopLoss" 
+                class="form-control" 
+                [(ngModel)]="newOrder.stopLoss"
+                name="stopLoss"
+                step="0.00001"
+              >
+            </div>
+            
+            <div class="form-group">
+              <label for="takeProfit">Take Profit (Optional)</label>
+              <input 
+                type="number" 
+                id="takeProfit" 
+                class="form-control" 
+                [(ngModel)]="newOrder.takeProfit"
+                name="takeProfit"
+                step="0.00001"
+              >
+            </div>
+            
+            <div class="form-group">
+              <label for="entryTime">Entry Time</label>
+              <input 
+                type="datetime-local" 
+                id="entryTime" 
+                class="form-control" 
+                [(ngModel)]="newOrder.entryTime"
+                name="entryTime"
+                required
+              >
+            </div>
+            
+            <div class="form-buttons">
+              <button type="submit" class="btn btn-primary">Place Order</button>
+              <button type="button" class="btn btn-outline-secondary ml-2" (click)="hideOrderForm()">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+      <!-- Order List -->
+      <div class="card mb-4">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">Orders</h5>
+          <span class="badge badge-primary">{{ orders.length }}</span>
+        </div>
+        <div class="card-body p-0">
+          <div class="list-group">
+            <div 
+              *ngFor="let order of orders" 
+              class="list-group-item list-group-item-action" 
+              [class.active]="selectedOrder?.id === order.id" 
+              (click)="selectOrder(order)"
+            >
+              <div class="d-flex w-100 justify-content-between">
+                <h6 class="mb-1" [ngClass]="{'text-success': order.side === 'Buy', 'text-danger': order.side === 'Sell'}">
+                  {{ order.side }} {{ order.quantity }} lot(s)
+                </h6>
+                <small>{{ order.entryTime | date:'short' }}</small>
+              </div>
+              <p class="mb-1">
+                Entry: {{ order.price }}
+                <span *ngIf="order.exitPrice"> → Exit: {{ order.exitPrice }}</span>
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="badge" 
+                  [ngClass]="{'badge-success': order.status === 'Filled' && order.pnL! > 0, 
+                             'badge-danger': order.status === 'Filled' && order.pnL! < 0,
+                             'badge-warning': order.status === 'Pending',
+                             'badge-secondary': order.status === 'Cancelled'}">
+                  {{ order.status }}
+                  <span *ngIf="order.status === 'Filled' && order.pnL">
+                    ({{ order.pnL | currency }})
+                  </span>
+                </span>
+                <div class="btn-group">
+                  <button 
+                    class="btn btn-sm btn-outline-primary" 
+                    *ngIf="order.status === 'Pending' || (order.status === 'Filled' && !order.exitTime)"
+                    (click)="closeOrder(order); $event.stopPropagation()">
+                    Close
+                  </button>
+                  <button 
+                    class="btn btn-sm btn-outline-danger" 
+                    (click)="deleteOrder(order); $event.stopPropagation()">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="text-center p-3" *ngIf="orders.length === 0">
+            <p class="text-muted mb-0">No orders yet</p>
+            <button class="btn btn-link" (click)="showOrderForm()">Create your first order</button>
+          </div>
+        </div>
+      </div>
     </div>
-    <p>Loading backtest data...</p>
   </div>
-  
-  <div class="alert alert-danger" *ngIf="errorMessage">
-    {{ errorMessage }}
+</div>
+
+<div class="loading-container" *ngIf="isLoading">
+  <div class="spinner-border text-primary" role="status">
+    <span class="sr-only">Loading...</span>
   </div>
+  <p>Loading backtest data...</p>
+</div>
+
+<div class="alert alert-danger" *ngIf="errorMessage">
+  {{ errorMessage }}
+</div>

@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\dylan\\source\\repos\\BacktestFX\\BacktestAPI\\BacktestArenaAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{78CC3F7F-FF3C-4806-B947-EA9FEEB65DA9}|BacktestArenaAPI.csproj|c:\\users\\dylan\\source\\repos\\backtestfx\\backtestapi\\backtestarenaapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{78CC3F7F-FF3C-4806-B947-EA9FEEB65DA9}|BacktestArenaAPI.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{78CC3F7F-FF3C-4806-B947-EA9FEEB65DA9}|BacktestArenaAPI.csproj|c:\\users\\dylan\\source\\repos\\backtestfx\\backtestapi\\backtestarenaapi\\models\\backtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{78CC3F7F-FF3C-4806-B947-EA9FEEB65DA9}|BacktestArenaAPI.csproj|solutionrelative:models\\backtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{78CC3F7F-FF3C-4806-B947-EA9FEEB65DA9}|BacktestArenaAPI.csproj|c:\\users\\dylan\\source\\repos\\backtestfx\\backtestapi\\backtestarenaapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{78CC3F7F-FF3C-4806-B947-EA9FEEB65DA9}|BacktestArenaAPI.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{78CC3F7F-FF3C-4806-B947-EA9FEEB65DA9}|BacktestArenaAPI.csproj|c:\\users\\dylan\\source\\repos\\backtestfx\\backtestapi\\backtestarenaapi\\controllers\\backtestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{78CC3F7F-FF3C-4806-B947-EA9FEEB65DA9}|BacktestArenaAPI.csproj|solutionrelative:controllers\\backtestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{78CC3F7F-FF3C-4806-B947-EA9FEEB65DA9}|BacktestArenaAPI.csproj|c:\\users\\dylan\\source\\repos\\backtestfx\\backtestapi\\backtestarenaapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{78CC3F7F-FF3C-4806-B947-EA9FEEB65DA9}|BacktestArenaAPI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78CC3F7F-FF3C-4806-B947-EA9FEEB65DA9}|BacktestArenaAPI.csproj|c:\\users\\dylan\\source\\repos\\backtestfx\\backtestapi\\backtestarenaapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{78CC3F7F-FF3C-4806-B947-EA9FEEB65DA9}|BacktestArenaAPI.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78CC3F7F-FF3C-4806-B947-EA9FEEB65DA9}|BacktestArenaAPI.csproj|c:\\users\\dylan\\source\\repos\\backtestfx\\backtestapi\\backtestarenaapi\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{78CC3F7F-FF3C-4806-B947-EA9FEEB65DA9}|BacktestArenaAPI.csproj|solutionrelative:appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78CC3F7F-FF3C-4806-B947-EA9FEEB65DA9}|BacktestArenaAPI.csproj|c:\\users\\dylan\\source\\repos\\backtestfx\\backtestapi\\backtestarenaapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{78CC3F7F-FF3C-4806-B947-EA9FEEB65DA9}|BacktestArenaAPI.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{78CC3F7F-FF3C-4806-B947-EA9FEEB65DA9}|BacktestArenaAPI.csproj|c:\\users\\dylan\\source\\repos\\backtestfx\\backtestapi\\backtestarenaapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -23,16 +35,8 @@
       "RelativeMoniker": "D:0:0:{78CC3F7F-FF3C-4806-B947-EA9FEEB65DA9}|BacktestArenaAPI.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{78CC3F7F-FF3C-4806-B947-EA9FEEB65DA9}|BacktestArenaAPI.csproj|c:\\users\\dylan\\source\\repos\\backtestfx\\backtestapi\\backtestarenaapi\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{78CC3F7F-FF3C-4806-B947-EA9FEEB65DA9}|BacktestArenaAPI.csproj|solutionrelative:appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{78CC3F7F-FF3C-4806-B947-EA9FEEB65DA9}|BacktestArenaAPI.csproj|c:\\users\\dylan\\source\\repos\\backtestfx\\backtestapi\\backtestarenaapi\\controllers\\marketdatacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{78CC3F7F-FF3C-4806-B947-EA9FEEB65DA9}|BacktestArenaAPI.csproj|solutionrelative:controllers\\marketdatacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{78CC3F7F-FF3C-4806-B947-EA9FEEB65DA9}|BacktestArenaAPI.csproj|c:\\users\\dylan\\source\\repos\\backtestfx\\backtestapi\\backtestarenaapi\\controllers\\backtestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{78CC3F7F-FF3C-4806-B947-EA9FEEB65DA9}|BacktestArenaAPI.csproj|solutionrelative:controllers\\backtestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{78CC3F7F-FF3C-4806-B947-EA9FEEB65DA9}|BacktestArenaAPI.csproj|c:\\users\\dylan\\source\\repos\\backtestfx\\backtestapi\\backtestarenaapi\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -45,10 +49,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{78CC3F7F-FF3C-4806-B947-EA9FEEB65DA9}|BacktestArenaAPI.csproj|c:\\users\\dylan\\source\\repos\\backtestfx\\backtestapi\\backtestarenaapi\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{78CC3F7F-FF3C-4806-B947-EA9FEEB65DA9}|BacktestArenaAPI.csproj|solutionrelative:models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{78CC3F7F-FF3C-4806-B947-EA9FEEB65DA9}|BacktestArenaAPI.csproj|c:\\users\\dylan\\source\\repos\\backtestfx\\backtestapi\\backtestarenaapi\\models\\backtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{78CC3F7F-FF3C-4806-B947-EA9FEEB65DA9}|BacktestArenaAPI.csproj|solutionrelative:models\\backtest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,25 +58,34 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\dylan\\source\\repos\\BacktestFX\\BacktestAPI\\BacktestArenaAPI\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "appsettings.Development.json",
+              "ToolTip": "C:\\Users\\dylan\\source\\repos\\BacktestFX\\BacktestAPI\\BacktestArenaAPI\\appsettings.Development.json",
+              "RelativeToolTip": "appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-21T04:17:30.349Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\dylan\\source\\repos\\BacktestFX\\BacktestAPI\\BacktestArenaAPI\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "Properties\\launchSettings.json",
               "ToolTip": "C:\\Users\\dylan\\source\\repos\\BacktestFX\\BacktestAPI\\BacktestArenaAPI\\Properties\\launchSettings.json",
               "RelativeToolTip": "Properties\\launchSettings.json",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAAABoAAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAYwBoAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-03-20T03:14:40.364Z",
               "EditorCaption": ""
@@ -84,25 +93,12 @@
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "appsettings.Development.json",
-              "DocumentMoniker": "C:\\Users\\dylan\\source\\repos\\BacktestFX\\BacktestAPI\\BacktestArenaAPI\\appsettings.Development.json",
-              "RelativeDocumentMoniker": "appsettings.Development.json",
-              "ToolTip": "C:\\Users\\dylan\\source\\repos\\BacktestFX\\BacktestAPI\\BacktestArenaAPI\\appsettings.Development.json",
-              "RelativeToolTip": "appsettings.Development.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-03-19T02:21:19.21Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\dylan\\source\\repos\\BacktestFX\\BacktestAPI\\BacktestArenaAPI\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
               "ToolTip": "C:\\Users\\dylan\\source\\repos\\BacktestFX\\BacktestAPI\\BacktestArenaAPI\\appsettings.json",
               "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-03-19T02:21:05.649Z",
               "EditorCaption": ""
@@ -115,14 +111,14 @@
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\dylan\\source\\repos\\BacktestFX\\BacktestAPI\\BacktestArenaAPI\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAD4vxoAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-19T01:59:57.455Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "MarketDataController.cs",
               "DocumentMoniker": "C:\\Users\\dylan\\source\\repos\\BacktestFX\\BacktestAPI\\BacktestArenaAPI\\Controllers\\MarketDataController.cs",
               "RelativeDocumentMoniker": "Controllers\\MarketDataController.cs",
@@ -130,38 +126,37 @@
               "RelativeToolTip": "Controllers\\MarketDataController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T01:56:37.36Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-19T01:56:37.36Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 1,
               "Title": "BacktestController.cs",
               "DocumentMoniker": "C:\\Users\\dylan\\source\\repos\\BacktestFX\\BacktestAPI\\BacktestArenaAPI\\Controllers\\BacktestController.cs",
               "RelativeDocumentMoniker": "Controllers\\BacktestController.cs",
               "ToolTip": "C:\\Users\\dylan\\source\\repos\\BacktestFX\\BacktestAPI\\BacktestArenaAPI\\Controllers\\BacktestController.cs",
               "RelativeToolTip": "Controllers\\BacktestController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABYAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAACYAAAAAAAAAAAAowDUAAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-19T01:53:12.28Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\dylan\\source\\repos\\BacktestFX\\BacktestAPI\\BacktestArenaAPI\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
               "ToolTip": "C:\\Users\\dylan\\source\\repos\\BacktestFX\\BacktestAPI\\BacktestArenaAPI\\Controllers\\AuthController.cs",
               "RelativeToolTip": "Controllers\\AuthController.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAAACsAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAACAAAAAAAAAAAADwvysAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-18T05:06:39.037Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\Users\\dylan\\source\\repos\\BacktestFX\\BacktestAPI\\BacktestArenaAPI\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
@@ -169,12 +164,11 @@
               "RelativeToolTip": "Data\\ApplicationDbContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T06:40:30.901Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-17T06:40:30.901Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "MarketData.cs",
               "DocumentMoniker": "C:\\Users\\dylan\\source\\repos\\BacktestFX\\BacktestAPI\\BacktestArenaAPI\\Models\\MarketData.cs",
               "RelativeDocumentMoniker": "Models\\MarketData.cs",
@@ -182,12 +176,11 @@
               "RelativeToolTip": "Models\\MarketData.cs",
               "ViewState": "AgIAABMAAAAAAAAAAAAkwCUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T06:36:44.532Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-17T06:36:44.532Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Order.cs",
               "DocumentMoniker": "C:\\Users\\dylan\\source\\repos\\BacktestFX\\BacktestAPI\\BacktestArenaAPI\\Models\\Order.cs",
               "RelativeDocumentMoniker": "Models\\Order.cs",
@@ -195,31 +188,30 @@
               "RelativeToolTip": "Models\\Order.cs",
               "ViewState": "AgIAAEYAAAAAAAAAAAA9wEkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-17T06:17:28.997Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-17T06:17:28.997Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\dylan\\source\\repos\\BacktestFX\\BacktestAPI\\BacktestArenaAPI\\Models\\User.cs",
               "RelativeDocumentMoniker": "Models\\User.cs",
               "ToolTip": "C:\\Users\\dylan\\source\\repos\\BacktestFX\\BacktestAPI\\BacktestArenaAPI\\Models\\User.cs",
               "RelativeToolTip": "Models\\User.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBcAAAAzAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-17T06:16:38.358Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 0,
               "Title": "Backtest.cs",
               "DocumentMoniker": "C:\\Users\\dylan\\source\\repos\\BacktestFX\\BacktestAPI\\BacktestArenaAPI\\Models\\Backtest.cs",
               "RelativeDocumentMoniker": "Models\\Backtest.cs",
               "ToolTip": "C:\\Users\\dylan\\source\\repos\\BacktestFX\\BacktestAPI\\BacktestArenaAPI\\Models\\Backtest.cs",
               "RelativeToolTip": "Models\\Backtest.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAQwBUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACwAAAAAAAAAAAA6wEEAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-17T06:15:29.812Z",
               "EditorCaption": ""

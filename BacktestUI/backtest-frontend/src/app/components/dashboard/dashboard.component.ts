@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BacktestService } from '../../services/backtest.service';
 import { Backtest } from '../../models/backtest.model';
-import { CommonModule } from '@angular/common';
+import { NgIf, NgFor, NgClass, DatePipe, CurrencyPipe, DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  imports:[CommonModule],
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
+  standalone: true,
+  imports: [NgIf, NgFor, NgClass, DatePipe, CurrencyPipe, DecimalPipe]
 })
 export class DashboardComponent implements OnInit {
   backtests: Backtest[] = [];

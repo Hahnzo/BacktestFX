@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { NgIf, NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-register',
-  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.scss'
+  styleUrls: ['./register.component.scss'],
+  standalone: true,
+  imports: [ReactiveFormsModule, NgIf, NgClass, RouterLink]
 })
 export class RegisterComponent {
   registerForm: FormGroup;
@@ -57,11 +57,5 @@ export class RegisterComponent {
         this.errorMessage = error.error?.message || 'Registration failed';
       }
     });
-
-    // this.authService.test().subscribe({
-    //   next: () => {
-    //     console.log("it works");
-    //   }
-    // })
   }
 }
